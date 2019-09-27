@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react';  // import library ต่างๆ ที่จำเป็น
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import Forecast from './Forecast';
 
 export default class Weather extends React.Component {
-    constructor(props) {
+    constructor(props) {    // ประกาศ Contructor set ค่าเริ่มต้นต่างๆ ที่จำเป็น
         super(props);
         this.state = {
             forecast: {
@@ -14,13 +14,13 @@ export default class Weather extends React.Component {
         }
     }
 
-    componentDidUpdate = (prevProps) => {
+    componentDidUpdate = (prevProps) => {   // สร้าง Arrow function ที่ทำการ update หน้าจอเมื่อเลือก zipCode
         if(prevProps.zipCode !== this.props.zipCode) {
             this.fetchData();
         }
     }
 
-    fetchData = () => {
+    fetchData = () => { // สร้าง Arrow function เพื่อทำการ Fetch ข้อมูล โดยจะทำการ setState เมื่อเรียกใช้
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.props.zipCode},th&units=metric&APPID=fd68c0f2039c5a25f666a9ff374bc93e`)
             .then((response) => response.json())
             .then((json) => {
@@ -38,9 +38,9 @@ export default class Weather extends React.Component {
             });
     }
 
-    componentDidMount = () => this.fetchData()
+    componentDidMount = () => this.fetchData()  // สร้าง Arrow function เพื่อทำการ fetch data จากการ Mount
 
-    render() {
+    render() { // แสดง component ต่างๆ ที่แสดงถึงองค์ปประกอบต่างๆ ของหน้าจอ
         return(
             <View style={styles.container}>
                 <ImageBackground source={require('./bg1.jpg')} style={styles.backdrop}>
@@ -54,7 +54,7 @@ export default class Weather extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({  // กำหนด style ให้สวยงาม
     container: {
         flex: 1,
         alignItems: 'center',

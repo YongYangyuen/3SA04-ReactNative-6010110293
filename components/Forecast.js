@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'; // import library ต่างๆ ที่จำเป็น
 import {StyleSheet, Text, View} from 'react-native';
 
 export default class Forecast extends React.Component {
-    render() {
+    render() { // ทำการจัดวาง layout ต่างๆ ลงเพื่อแสดงรหัสไปรษณีย์ และ ทำการพยากรณ์อากาศพร้อมบอกอุณหภูมิ
         return(
             <View style={styles.container}>
                 <Text style={styles.font2}>{this.props.main}</Text>
@@ -17,7 +17,7 @@ export default class Forecast extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({  // กำหนด style ให้สวยงาม
     container: {
         alignItems: 'center',
         justifyContent: 'center',
